@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <typeinfo>
 
 
 // Type list declaration
@@ -48,16 +49,14 @@ void printTypeList<EmptyList>() {
 
 // Returns length
 template<typename TL>
-struct Length : std::integral_constant<unsigned int, 0> {};
+struct Length {
+	enum { value = Length<typename TL::tail>::value + 1 };
+};
 
 template<>
-struct Length<EmptyList> : std::integral_constant<unsigned int, 0> {};
-
-template<typename ...Args>
-struct Length<typename TypeList<Args...>> : std::integral_constant<unsigned int, 
-	IsEmpty<TypeList<Args...>>::value 
-	? 0 
-	: Length<typename TypeList<Args...>::tail>::value + 1> {};
+struct Length<EmptyList> {
+	enum { value = 0 };
+};
 
 
 // Returns type at given index
@@ -84,6 +83,11 @@ struct Skip<0, TL> {
 
 template<unsigned int N>
 struct Skip<N, EmptyList> {
+	using result = EmptyList;
+};
+
+template<>
+struct Skip<0, EmptyList> {
 	using result = EmptyList;
 };
 

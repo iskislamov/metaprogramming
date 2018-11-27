@@ -37,7 +37,7 @@ struct FibonacciHelper<index, TypeList<T, Args...>, Unit>
 	                         TypeList<T, Args...>>::result, Unit> {};
 
 template <unsigned int index, template <class, class> class Unit>
-class FibonacciHelper<index, EmptyList, Unit> {}; //
+class FibonacciHelper<index, EmptyList, Unit> {};
 
 
 template <typename TL, template <class, class> class Unit>
