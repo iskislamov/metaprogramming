@@ -1,6 +1,7 @@
 #include "typelist.h"
 #include "hierarchy.h"
 #include "fibonacci.h"
+#include <typeinfo>
 
 
 class A {
@@ -37,7 +38,5 @@ int main() {
 	
 	std::cout << sizeof(static_cast<GenLinearHierarchy<Fibonacci<1>::value, Skip<Fibonacci<0>::value, TL4>::result, Unit>> (gsh)) << std::endl;
 	std::cout << sizeof(TypeAt<1, TL4>::type) << std::endl;
-
-	system("pause");
 	return 0;
 }
