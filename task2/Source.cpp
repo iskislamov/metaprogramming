@@ -1,6 +1,7 @@
 #include "typelist.h"
 #include "hierarchy.h"
 #include "fibonacci.h"
+#include <typeinfo>
 
 
 class A {
