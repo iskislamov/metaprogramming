@@ -11,6 +11,10 @@ private:
 public:
 	Pattern() {}
 
+	~Pattern() {
+		members_.clear();
+	}
+
 	void attach(B* b) {
 		for (auto it = members_.begin(); it != members_.end(); ++it) {
 			if (*it == b) {

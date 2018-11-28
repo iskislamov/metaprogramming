@@ -26,6 +26,10 @@ private:
 public:
 	Pattern() {}
 
+	~Pattern() {
+		subscribers_.clear();
+	}
+
 	Pattern(B* ptr) {
 		if (!ptr) {
 			std::cout << "Pointer to nullptr" << std::endl;
