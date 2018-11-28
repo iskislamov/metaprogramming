@@ -20,6 +20,9 @@ void test1() {
 
 	obs.addSubscriber(&a3);
 	obs.execute();
+
+	delete a1;
+
 }
 
 
@@ -31,6 +34,9 @@ void test2() {
 	a1->execute(&prx);
 	prx.attach(b);
 	a2->execute(&prx);
+	delete b;
+	delete a1;
+	delete a2;
 }
 
 void test3() {
@@ -50,7 +56,9 @@ void test3() {
 
 	mediator.attach(b3);
 	a.execute(&mediator);
-
+	delete b1;
+	delete b2;
+	delete b3;
 }
 
 int main() {
@@ -61,5 +69,8 @@ int main() {
 	test2();
 	std::cout << "Mediator test:" << std::endl;
 	test3();
+
+	int a;
+	std::cin >> a;
 	return 0;
 }
